@@ -81,7 +81,7 @@
     background: linear-gradient(180deg, #CE1B1B, #B81818);
     margin: 4px 0;
     border-radius: 5rem;
-    transition: 0.4s ease;
+    transition: 0.5s ease;
 }
 
 .hamburger:hover .bar {
@@ -121,19 +121,20 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 0;
-        padding: 0;
-        overflow: hidden;
-        transition: height 0.4s ease-in-out;
+        transform: scaleY(0); 
+        transform-origin: top;
+        opacity: 0;
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
         z-index: -1;
+        padding: 50px;
         gap: 100px;
     }
 
     .navbar-links.active {
-        height: 40rem;
-        padding: 0;
+        transform: scaleY(1); 
+        opacity: 1;
         z-index: -1;
-        gap: 100px;
+        padding: 50px;
     }
     .hamburger {
         display: flex;
@@ -150,16 +151,34 @@
     .logo-text {
         font-size: 1rem;
     }
+    
     .navbar-links {
         gap: 50px;
     }
     .navbar-links a {
         font-size: 1rem;
+        color: transparent; 
+        background: linear-gradient(180deg, #CE1B1B, #B81818);
+        -webkit-background-clip: text;
+        background-clip: text;
     }
+    .navbar-links a:hover {
+        color: transparent;
+        transition: none;
+    }
+    .logo:hover .logo-text {
+        color: transparent;
+        transition: none;
+    }
+    .logo:hover img {
+        transform: none;
+        transition: none;
+    }
+    
     .navbar-links.active {
-        height: 20rem;
-        padding: 0;
-        z-index: -1;
+        transform: scaleY(1);
+        opacity: 1;
+        z-index: 1;
         gap: 50px;
     }
 }
