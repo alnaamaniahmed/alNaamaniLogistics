@@ -28,7 +28,6 @@
 }
 
 .navbar-links{
-    
     display: flex;
     justify-content: space-between;
     margin-right: 15%;
@@ -82,7 +81,7 @@
     background: linear-gradient(180deg, #CE1B1B, #B81818);
     margin: 4px 0;
     border-radius: 5rem;
-    transition: 0.4s;
+    transition: 0.4s ease;
 }
 
 .hamburger:hover .bar {
@@ -127,14 +126,14 @@
         overflow: hidden;
         transition: height 0.4s ease-in-out;
         z-index: -1;
-        gap: 120px;
+        gap: 100px;
     }
 
     .navbar-links.active {
         height: 40rem;
         padding: 0;
         z-index: -1;
-        gap: 120px;
+        gap: 100px;
     }
     .hamburger {
         display: flex;
@@ -147,6 +146,21 @@
 @media (max-width: 500px) {
     .navbar {
         gap: 40px;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
+    .navbar-links {
+        gap: 50px;
+    }
+    .navbar-links a {
+        font-size: 1rem;
+    }
+    .navbar-links.active {
+        height: 20rem;
+        padding: 0;
+        z-index: -1;
+        gap: 50px;
     }
 }
 @media (max-width: 370px){
