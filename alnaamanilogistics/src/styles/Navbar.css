@@ -1,11 +1,10 @@
-
 @keyframes slideDownFadeIn {
     0% {
         opacity: 0;
         transform: translateY(-10px); 
     }
     100% {
-        opacity: 1;
+        opacity: 0.97;
         transform: translateY(0); 
     }
 }
