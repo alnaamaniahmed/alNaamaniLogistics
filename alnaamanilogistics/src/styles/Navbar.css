@@ -1,3 +1,14 @@
+
+@keyframes slideDownFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
 .navbar{
     display: flex;
     align-items: center;
@@ -9,8 +20,15 @@
     gap: 100px;
     background: linear-gradient(135deg, #f2f2f2, #d9d9d9, #bfbfbf);
     padding: 10px 20px;
+    opacity: 0; 
+    animation: slideDownFadeIn 2s ease-out forwards; 
+    transition: opacity 0.3s ease, box-shadow 0.5s ease, backdrop-filter 0.5s ease; 
 }
-
+.navbar.scrolled {
+    opacity: 0.97; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(0); 
+}
 .logo {
    
     display: flex;
@@ -183,13 +201,18 @@
     }
 }
 @media (max-width: 370px){
-    .navbar-links {
-        top: 8.8rem;
-    }
     .logo-text {
         white-space: normal; 
         text-align: center;  
         padding-left: 0;
+    }
+    .navbar-links {
+        top: 7.3rem;
+    }
+}
+@media (max-width: 360px){
+    .navbar-links {
+        top: 8.5rem;
     }
 }
 @media (max-width: 320px){
