@@ -13,11 +13,13 @@ function Footer() {
         ([entry]) => {
             if (entry.isIntersecting) {
                 footer.classList.add('animate');
-            }
+            }else {
+              footer.classList.remove('animate'); 
+          }
         },
         {
-            root: null, // Observe with respect to the viewport
-            threshold: 0.1, // Trigger when 10% of the footer is in view
+            root: null, 
+            threshold: 0.1, 
         }
     );
 
