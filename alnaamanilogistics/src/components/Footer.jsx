@@ -97,11 +97,7 @@ function Footer() {
             <span className="logo-text">AL NAAMANI LOGISTICS</span>
           </div>
         </div>
-        <div className="contactUs">
-          <div className="headerContact">
-            <h2 className="headerText">Contact Us</h2>
-            <div className="headerBar"></div>
-          </div>
+        <div className="contactInfo">
           <div className="info">
             <div className="upper-section">
               <div className="contentHeader">

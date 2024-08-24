@@ -4,7 +4,7 @@ import logisticsL from "../images/logistics.png";
 import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
-import truckImg from "../images/truckImg.png";
+import truckImg from "../images/truckImg.png"; 
 
 function Hero() {
   const [formData, setFormData] = useState({
@@ -90,7 +90,7 @@ function Hero() {
             Welcome to <span>Al Naamani Logistics</span>
           </h1>
           <p id="first">Your trusted partner in delivering</p>
-          <p id="second">excellence and efficiency</p>
+          <p id="second">Excellence and Efficiency</p>
         </div>
       </div>
       <div id="services" className="services">
