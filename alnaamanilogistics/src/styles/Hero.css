@@ -487,6 +487,9 @@
   .hero-container {
     padding-top: 8.5rem;
   }
+  .sectionForm{
+    width: 100%;
+  }
 }
 @media (max-width: 558px) {
   .contactUsSection {
@@ -572,7 +575,7 @@
   .contact-form textarea {
     margin-bottom: 10px;
     padding: 0.5rem;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
   }
 }
 @media (max-width: 367px) {

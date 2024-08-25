@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Hero.css";
+import {Typewriter} from "react-simple-typewriter";
 import logisticsL from "../images/logistics.png";
 import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
@@ -90,7 +91,15 @@ function Hero() {
             Welcome to <span>Al Naamani Logistics</span>
           </h1>
           <p id="first">Your trusted partner in delivering</p>
-          <p id="second">Excellence and Efficiency</p>
+          <p id="second">{""}<Typewriter
+                words={["Excellence and Efficiency", "Reliability and Precision", "Trust and Commitment"]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              /></p>
         </div>
       </div>
       <div id="services" className="services">
