@@ -4,7 +4,8 @@ import Logo from "../images/logo.png";
 import mailIcon from "../images/mail.png";
 import phoneIcon from "../images/phone.png";
 import locationIcon from "../images/location.png";
-function Footer() {
+import { Link } from "react-scroll";
+function Footer({ isArabic }) {
   const year = new Date().getFullYear();
   useEffect(() => {
     const footer = document.querySelector('.footer-container');
@@ -92,26 +93,34 @@ function Footer() {
       </div>
       <div className="footer-content">
         <div className="logo-holder">
-          <div className="logo-container">
-            <img src={Logo} alt="AlNaamani Logistics Logo" />
-            <span className="logo-text">AL NAAMANI LOGISTICS</span>
-          </div>
+        <Link
+            to="home"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+            className="logo-container"
+          >
+            <img src={Logo} alt={isArabic ? "شعار النعماني اللوجستية" : "AlNaamani Logistics Logo"} />
+            <span className="logo-text">{isArabic ? "النعماني اللوجستية" : "AL NAAMANI LOGISTICS"}</span>
+          </Link>
         </div>
         <div className="contactInfo">
           <div className="info">
             <div className="upper-section">
               <div className="contentHeader">
-                <span className="contentText">Address</span>
+                <span className="contentText">{isArabic ? "العنوان" : "Address"}</span>
                 <div className="details">
                   <img src={locationIcon} alt="locationIcon" />
                   <span>
-                    C.R. No. 1307593, P.O Box: 1286,
-                    P. C 111, Sultanate of Oman
+                  {isArabic
+                      ? "رقم السجل التجاري 1307593، صندوق بريد: 1286، ص.ب 111، سلطنة عمان"
+                      : "C.R. No. 1307593, P.O Box: 1286, P. C 111, Sultanate of Oman"}
                   </span>
                 </div>
               </div>
               <div className="contentHeader">
-                <span className="contentText">Primary</span>
+                <span className="contentText">{isArabic ? "رقم الهاتف الرئيسي" : "Primary"}</span>
                 <div className="details-primary">
                   <img src={phoneIcon} alt="phoneIcon" />
                   <span>+968 24272714</span>
@@ -120,15 +129,15 @@ function Footer() {
             </div>
             <div className="bottom-section">
               <div className="contentHeader">
-                <span className="contentText">Email</span>
+                <span className="contentText">{isArabic ? "البريد الإلكتروني" : "Email"}</span>
                 <div className="details">
                   <img src={mailIcon} alt="mailIcon" />
-                  <span>namanihm@gmail.com</span>
+                  <span>alnaamanilogistics@gmail.com</span>
                 </div>
               </div>
               <div>
                 <div className="contentHeader">
-                  <span className="contentText" >Secondary</span>
+                  <span className="contentText" >{isArabic ? "رقم الهاتف الثانوي" : "Secondary"}</span>
                   <div className="details">
                     <img src={phoneIcon} alt="phoneIcon" />
                     <span>+968 92543933</span>
@@ -139,10 +148,10 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="copyright">
-        <span className="copyright-text">
-          &copy; {year} Al NAAMANI LOGISTICS. All Rights Reserved.
-        </span>
+      <div className={isArabic ? "copyright-arabic" : "copyright"}>
+        {isArabic ? <span className="copyright-text">جميع الحقوق محفوظة &copy; النعماني اللوجستية {year}
+          </span> : <span className="copyright-text"> {year} &copy; Al NAAMANI LOGISTICS. All Rights Reserved.
+          </span>}
       </div>
     </footer>
   );

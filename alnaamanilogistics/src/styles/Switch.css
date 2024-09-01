@@ -1,0 +1,75 @@
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    margin: 0 0.75rem;
+  }
+  
+  .toggle-switch input[type="checkbox"] {
+    display: none;
+  }
+  
+  .toggle-switch .switch {
+    position: absolute;
+    cursor: pointer;
+    background-color: #6D6D6D; 
+    border-radius: 25px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: background-color 0.2s ease;
+    box-shadow: inset 0 0 0 1000px #9B9B9B;
+  }
+  
+  .toggle-switch .switch::before {
+    position: absolute;
+    content: "";
+    left: 2px;
+    top: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .toggle-switch input[type="checkbox"]:checked + .switch::before {
+    transform: translateX(25px);
+    background-color: #e0e0e0;
+  }
+  
+  .toggle-switch .flag-icon {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%);
+  }
+  
+  .flag-icon.left {
+    left: 6px;
+  }
+  
+  .flag-icon.right {
+    right: 6px;
+  }
+  .toggle-switch input[type="checkbox"]:checked + .switch {
+    background-color: #4A90E2; /* Subtle blue for a more modern look */
+    box-shadow: inset 0 0 0 1000px #5A9BD4; /* Simulate the gradient by using a box shadow */
+  }
+  @media (max-width: 1123px) {
+}
+
+@media (max-width: 950px) {
+    .toggle-switch {
+        width: 45px; /* Even smaller for smaller screens */
+        height: 20px;
+    }
+
+    .toggle-switch .switch::before {
+        width: 16px; /* Even smaller circle */
+        height: 16px;
+    }
+}

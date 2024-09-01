@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Hero.css";
-import {Typewriter} from "react-simple-typewriter";
+import { Typewriter } from "react-simple-typewriter";
 import logisticsL from "../images/logistics.png";
 import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
-import truckImg from "../images/truckImg.png"; 
+import truckImg from "../images/truckImg.png";
 
-function Hero() {
+function Hero({ isArabic }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,35 +17,43 @@ function Hero() {
   const [submitStatus, setSubmitStatus] = useState("");
   const [loadingDots, setLoadingDots] = useState("");
   useEffect(() => {
-    if (submitStatus === "Waiting to send message") {
+    console.log("is Arabic: ", isArabic);
+    if (
+      submitStatus === "Waiting to send message" ||
+      submitStatus === "في انتظار إرسال الرسالة"
+    ) {
       const interval = setInterval(() => {
         setLoadingDots((prevDots) =>
           prevDots.length < 3 ? prevDots + "." : ""
         );
-      }, 500); 
+      }, 500);
 
       return () => clearInterval(interval);
     } else {
       setLoadingDots("");
     }
-  }, [submitStatus]);
+  }, [submitStatus, isArabic]);
   useEffect(() => {
-    if (submitStatus === "Message sent successfully!") {
+    console.log("is Arabic: ", isArabic);
+    if (
+      submitStatus === "Message sent successfully!" ||
+      submitStatus === "تم إرسال الرسالة بنجاح!"
+    ) {
       const fadeTimeout = setTimeout(() => {
-        setFadeOut(true); 
-      }, 1000); 
+        setFadeOut(true);
+      }, 1000);
 
       const timeout = setTimeout(() => {
-        setSubmitStatus(""); 
-        setFadeOut(false); 
+        setSubmitStatus("");
+        setFadeOut(false);
       }, 3000);
 
       return () => {
         clearTimeout(fadeTimeout);
         clearTimeout(timeout);
-      }; 
+      };
     }
-  }, [submitStatus]);
+  }, [submitStatus, isArabic]);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -56,10 +64,16 @@ function Hero() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(formData.email)) {
-      alert("Please enter a valid email address.");
+      alert(
+        isArabic
+          ? ".يرجى إدخال عنوان بريد إلكتروني صالح"
+          : "Please enter a valid email address."
+      );
       return;
     }
-    setSubmitStatus("Waiting to send message");
+    setSubmitStatus(
+      isArabic ? "في انتظار إرسال الرسالة" : "Waiting to send message"
+    );
     try {
       const response = await fetch("https://formspree.io/f/xnnaodkl", {
         method: "POST",
@@ -74,89 +88,148 @@ function Hero() {
       });
 
       if (response.ok) {
-        setSubmitStatus("Message sent successfully!");
+        setSubmitStatus(
+          isArabic ? "تم إرسال الرسالة بنجاح!" : "Message sent successfully!"
+        );
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setSubmitStatus("Failed to send message. Please try again.");
+        setSubmitStatus(
+          isArabic
+            ? ".فشل في إرسال الرسالة. يرجى المحاولة مرة أخرى"
+            : "Failed to send message. Please try again."
+        );
       }
     } catch (error) {
-      setSubmitStatus("An error occurred. Please try again later.");
+      setSubmitStatus(
+        isArabic
+          ? ".حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً"
+          : "An error occurred. Please try again later."
+      );
     }
   };
   return (
-    <div id="home" className="hero-container">
+    <div
+      id="home"
+      className={isArabic ? "hero-container-arabic" : "hero-container"}
+    >
       <div className="cargos">
-        <div className="overlay-content">
+        <div
+          className={isArabic ? "overlay-content-arabic" : "overlay-content"}
+        >
           <h1>
-            Welcome to <span>Al Naamani Logistics</span>
+            {isArabic ? "مرحباً بك في " : "Welcome to "}{" "}
+            <span>
+              {isArabic ? "النعماني اللوجستية" : "Al Naamani Logistics"}
+            </span>
           </h1>
-          <p id="first">Your trusted partner in delivering</p>
-          <p id="second">{""}<Typewriter
-                words={["Excellence and Efficiency", "Reliability and Precision", "Trust and Commitment"]}
-                loop={0}
-                cursor
-                cursorStyle="|"
-                typeSpeed={100}
-                deleteSpeed={50}
-                delaySpeed={1000}
-              /></p>
+          <p id="first">
+            {isArabic
+              ? "شريكك الموثوق في تقديم"
+              : "Your trusted partner in delivering"}
+          </p>
+          <p id="second">
+            {""}
+            <Typewriter
+              words={
+                isArabic
+                  ? ["التميز والكفاءة", "الاعتمادية والدقة", "الثقة والالتزام"]
+                  : [
+                      "Excellence and Efficiency",
+                      "Reliability and Precision",
+                      "Trust and Commitment",
+                    ]
+              }
+              loop={0}
+              cursor
+              cursorStyle={"|"}
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </p>
         </div>
       </div>
       <div id="services" className="services">
-        <h2>Our Services</h2>
-        <p>Discover the many ways we can assist you</p>
+        <h2>{isArabic ? "خدماتنا" : "Our Services"}</h2>
+        <p>
+          {isArabic
+            ? "اكتشف الطرق العديدة التي يمكننا مساعدتك بها"
+            : "Discover the many ways we can assist you"}
+        </p>
         <div className="circle-logo">
           <div className="circle-logo-image">
             <div className="circledL">
-              <img className="Icons" src={planeL} alt="planeIcon" />
+              <img
+                className="Icons"
+                src={planeL}
+                alt={isArabic ? "رمز الطائرة" : "planeIcon"}
+              />
             </div>
-            <p className="services-type">Air Freight</p>
+            <p className="services-type">
+              {isArabic ? "الشحن الجوي" : "Air Freight"}
+            </p>
           </div>
           <div className="circle-logo-image">
             <div className="circledL">
-              <img className="Icons" src={worldL} alt="worldIcon" />
+              <img
+                className="Icons"
+                src={worldL}
+                alt={isArabic ? "رمز العالم" : "worldIcon"}
+              />
             </div>
-            <p className="services-type">WorldWide Transport</p>
+            <p className="services-type">
+              {isArabic ? "النقل العالمي" : "WorldWide Transport"}
+            </p>
           </div>
           <div className="circle-logo-image">
             <div className="circledL">
-              <img className="Icons" src={logisticsL} alt="logisticsIcon" />
+              <img
+                className="Icons"
+                src={logisticsL}
+                alt={isArabic ? "رمز الخدمات اللوجستية" : "logisticsIcon"}
+              />
             </div>
-            <p className="services-type">Logistics Services</p>
+            <p className="services-type">
+              {isArabic ? "الخدمات اللوجستية" : "Logistics Services"}
+            </p>
           </div>
           <div className="circle-logo-image">
             <div className="circledL">
-              <img className="Icons" src={busL} alt="planeIcon" />
+              <img
+                className="Icons"
+                src={busL}
+                alt={isArabic ? "رمز الحافلة" : "busIcon"}
+              />
             </div>
-            <p className="services-type">Road Freight</p>
+            <p className="services-type">
+              {isArabic ? "الشحن البري" : "Road Freight"}
+            </p>
           </div>
         </div>
       </div>
       <div className="AboutUs">
         <div className="aboutUs-img">
-          <img src={truckImg} alt="truckImage" />
+          <img src={truckImg} alt={isArabic ? "صورة الشاحنة" : "truckImage"} />
         </div>
         <div id="about" className="aboutUs-text">
-          <h2>About Us</h2>
-          <p>
-            We specialize in reliable and efficient global delivery solutions.
-            With expertise in both road and air freight, we ensure your goods
-            reach their destination safely and on time. Our customer-focused
-            approach and commitment to sustainability make us a trusted partner
-            in the logistics industry.
+          <h2>{isArabic ? "من نحن" : "About Us"}</h2>
+          <p className={isArabic ? "arabicPara" : ""}>
+            {isArabic
+              ? "نتخصص في حلول التوصيل العالمية الموثوقة و الفعالة. بفضل خبرتنا في الشحن البري و الجوي, نضمن وصول بضائعكم إلى وجهتها بأمان وفي الوقت المحدد. نهجنا الذي يركز على العميل والتزامنا بالاستدامة يجعلنا شريكاً موثوقاً في صناعة الخدمات اللوجستية."
+              : "We specialize in reliable and efficient global delivery solutions. With expertise in both road and air freight, we ensure your goods reach their destination safely and on time. Our customer-focused approach and commitment to sustainability make us a trusted partner in the logistics industry."}
           </p>
         </div>
       </div>
       <div id="contact" className="contactUsSection">
         <div className="sectionHeader">
-          <h2>Contact Us</h2>
+          <h2>{isArabic ? "تواصل معنا" : "Contact Us"}</h2>
         </div>
-        <div className="sectionForm">
+        <div className={isArabic ? "sectionForm-arabic" : "sectionForm"}>
           <form onSubmit={handleSubmit} className="contact-form">
             <input
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder={isArabic ? "الاسم" : "Your Name"}
               value={formData.name}
               onChange={handleChange}
               required
@@ -164,19 +237,19 @@ function Hero() {
             <input
               type="email"
               name="email"
-              placeholder="Your Email"
+              placeholder={isArabic ? "البريد الإلكتروني" : "Your Email"}
               value={formData.email}
               onChange={handleChange}
               required
             />
             <textarea
               name="message"
-              placeholder="Type Your Message..."
+              placeholder={isArabic ? "اكتب رسالتك..." : "Type Your Message..."}
               value={formData.message}
               onChange={handleChange}
               required
             ></textarea>
-            <button type="submit">Submit</button>
+            <button type="submit">{isArabic ? "إرسال" : "Submit"}</button>
           </form>
         </div>
         {submitStatus && (
@@ -184,7 +257,7 @@ function Hero() {
             className={`submit-status ${fadeOut ? "fade-out" : ""}`}
             style={{ fontFamily: "Raleway, sans-serif" }}
           >
-            <p>
+            <p  style={{ direction: isArabic ? "rtl" : "ltr" }}>
               {submitStatus}
               {loadingDots}
             </p>
