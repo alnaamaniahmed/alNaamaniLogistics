@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "../styles/Hero.css";
 import { Typewriter } from "react-simple-typewriter";
 import logisticsL from "../images/logistics.png";
@@ -6,8 +6,13 @@ import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
 import truckImg from "../images/truckImg.png";
+import airportImg from "../images/airport.png";
+import cargo from "../images/cargo.jpeg";
+import cargoship from "../images/cargoship.jpeg";
+import containers from "../images/containers.png";
 
 function Hero({ isArabic }) {
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,6 +21,24 @@ function Hero({ isArabic }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("");
   const [loadingDots, setLoadingDots] = useState("");
+  const [key, setKey] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = useMemo(() => [
+    cargoship,
+    cargo,
+    airportImg,
+    containers
+  ], []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [images]);
+
+  const imageUrl = images[currentImageIndex];
   useEffect(() => {
     console.log("is Arabic: ", isArabic);
     if (
@@ -107,12 +130,17 @@ function Hero({ isArabic }) {
       );
     }
   };
+  // Force re-render the typewriter component on language change
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1); // Increment key to trigger re-render
+  }, [isArabic]);
+
   return (
     <div
       id="home"
       className={isArabic ? "hero-container-arabic" : "hero-container"}
     >
-      <div className="cargos">
+      <div className="cargos"         style={{ backgroundImage: `url(${imageUrl})`, transition: 'background-image 1.5s ease-in-out' }}>
         <div
           className={isArabic ? "overlay-content-arabic" : "overlay-content"}
         >
@@ -130,6 +158,7 @@ function Hero({ isArabic }) {
           <p id="second">
             {""}
             <Typewriter
+              key={key}
               words={
                 isArabic
                   ? ["التميز والكفاءة", "الاعتمادية والدقة", "الثقة والالتزام"]

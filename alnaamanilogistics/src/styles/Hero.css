@@ -26,7 +26,6 @@
 .cargos {
   width: 100%;
   height: 780px;
-  background-image: url("../images/cargo.png");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -40,7 +39,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.55);
+  background-color: rgba(0, 0, 0, 0.72);
   pointer-events: none;
 }
 .overlay-content, .overlay-content-arabic{
@@ -401,6 +400,12 @@
 }
 
 @media (max-width: 880px) {
+  .contactUsSection {
+    flex-direction: column;
+  }
+  .sectionForm, .sectionForm-arabic {
+    width: 100%;
+  }
   .AboutUs {
     flex-direction: column;
   }
@@ -418,9 +423,6 @@
   }
 }
 @media (max-width: 664px) {
-  .contactUsSection {
-    flex-direction: column;
-  }
   .sectionHeader {
     padding: 1rem;
     border-radius: 10px 10px 0 0;
