@@ -6,10 +6,10 @@ import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
 import truckImg from "../images/truckImg.png";
-import airportImg from "../images/airport.png";
+import airportImg from "../images/airport.jpeg";
 import cargo from "../images/cargo.jpeg";
 import cargoship from "../images/cargoship.jpeg";
-import containers from "../images/containers.png";
+import containers from "../images/containers.jpeg";
 
 function Hero({ isArabic }) {
 
