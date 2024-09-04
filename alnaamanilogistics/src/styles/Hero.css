@@ -18,8 +18,6 @@
   padding-bottom: 10rem;
   box-sizing: border-box;
   text-align: center;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards 0.8s;
 }
 .carousel-wrapper {
   overflow: hidden;
