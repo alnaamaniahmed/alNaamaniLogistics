@@ -6,10 +6,12 @@ import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
 import truckImg from "../images/truckImg.png";
-// import airportImg from "../images/airport.jpg";
-// import cargo from "../images/cargo.jpg";
-// import cargoship from "../images/cargoship.jpg";
-// import containers from "../images/containers.jpg";
+import airportImg from "../images/airport.jpg";
+import cargo from "../images/cargo.jpg";
+import cargoship from "../images/cargoship.jpg";
+import containers from "../images/containers.jpg";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
 
 function Hero({ isArabic }) {
 
@@ -141,6 +143,26 @@ function Hero({ isArabic }) {
       className={isArabic ? "hero-container-arabic" : "hero-container"}
     >
       <div className="cargos">
+      <Carousel 
+        autoPlay 
+        infiniteLoop 
+        showThumbs={false} 
+        showStatus={false} 
+        className="carousel-wrapper"
+      >
+        <div>
+          <img src={cargoship} alt="Cargo Ship" />
+        </div>
+        <div>
+          <img src={cargo} alt="Cargo" />
+        </div>
+        <div>
+          <img src={airportImg} alt="Airport" />
+        </div>
+        <div>
+          <img src={containers} alt="Containers" />
+        </div>
+      </Carousel>
         <div
           className={isArabic ? "overlay-content-arabic" : "overlay-content"}
         >
