@@ -148,6 +148,10 @@ function Hero({ isArabic }) {
         infiniteLoop 
         showThumbs={false} 
         showStatus={false} 
+        showArrows={false}
+        autoFocus={true}
+        stopOnHover={false}
+        interval={4000}
         className="carousel-wrapper"
       >
         <div className="cargos">

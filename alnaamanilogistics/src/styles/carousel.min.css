@@ -314,36 +314,40 @@
     opacity: 1
 }
 @media (max-width: 880px) {
-  /* Hide slider arrows */
-  .carousel .control-arrow {
-    display: none !important;
-  }
+/* Hide all carousel control arrows */
+.carousel .control-arrow,
+.carousel .control-prev.control-arrow,
+.carousel .control-next.control-arrow {
+  display: none !important;
+}
 
-  /* Hide slider dots */
-  .carousel .control-dots {
-    display: none !important;
-  }
+/* Hide all carousel dots */
+.carousel .control-dots {
+  display: none !important;
+}
 
-  /* Disable hover effect to maintain autoplay */
-  .carousel:hover .slide .legend {
-    opacity: 0.25; /* Maintain opacity to prevent disruption */
-  }
+/* Remove any potential artifact that might be related to controls */
+.carousel {
+  overflow: hidden; /* Ensure no overflow artifacts */
+}
 
-  /* Disable manual swipe and interactions */
-  .carousel {
-    touch-action: none; /* Prevent swipe actions */
-    pointer-events: none; /* Disable all pointer events */
-    overflow: hidden; /* Ensure no overflow disrupts autoplay */
-  }
+/* Disable all pointer events to prevent any interaction */
+.carousel {
+  touch-action: none; /* Prevent swipe actions */
+  pointer-events: none; /* Disable all pointer events */
+}
 
-  /* Ensure autoplay continues without interruptions */
-  .carousel .slider {
-    pointer-events: none; /* Disable pointer events for slider */
-    -webkit-overflow-scrolling: touch; /* Allow smooth scrolling (optional) */
-  }
+/* Ensure smooth sliding without visual interruptions */
+.carousel .slider-wrapper {
+  overflow: hidden; /* Hide overflow to prevent any visual artifacts */
+}
 
-  /* Ensure no cursor change on hover */
-  .carousel:hover {
-    cursor: default; /* Ensure no cursor change on hover */
-  }
+.carousel .slider {
+  pointer-events: none; /* Ensure slider does not interact */
+}
+
+/* Ensure no cursor change on hover */
+.carousel:hover {
+  cursor: default; /* Ensure no cursor change on hover */
+}
 }
