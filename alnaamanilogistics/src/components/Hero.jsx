@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Hero.css";
 import { Typewriter } from "react-simple-typewriter";
 import logisticsL from "../images/logistics.png";
@@ -6,10 +6,10 @@ import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
 import truckImg from "../images/truckImg.png";
-import airportImg from "../images/airport.jpg";
-import cargo from "../images/cargo.jpg";
-import cargoship from "../images/cargoship.jpg";
-import containers from "../images/containers.jpg";
+// import airportImg from "../images/airport.jpg";
+// import cargo from "../images/cargo.jpg";
+// import cargoship from "../images/cargoship.jpg";
+// import containers from "../images/containers.jpg";
 
 function Hero({ isArabic }) {
 
@@ -22,23 +22,23 @@ function Hero({ isArabic }) {
   const [submitStatus, setSubmitStatus] = useState("");
   const [loadingDots, setLoadingDots] = useState("");
   const [key, setKey] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = useMemo(() => [
-    cargoship,
-    cargo,
-    airportImg,
-    containers
-  ], []);
+  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // const images = useMemo(() => [
+  //   cargoship,
+  //   cargo,
+  //   airportImg,
+  //   containers
+  // ], []);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  //   }, 3000);
 
-    return () => clearInterval(intervalId);
-  }, [images]);
+  //   return () => clearInterval(intervalId);
+  // }, [images]);
 
-  const imageUrl = images[currentImageIndex];
+  // const imageUrl = images[currentImageIndex];
   useEffect(() => {
     console.log("is Arabic: ", isArabic);
     if (
@@ -140,7 +140,7 @@ function Hero({ isArabic }) {
       id="home"
       className={isArabic ? "hero-container-arabic" : "hero-container"}
     >
-      <div className="cargos"         style={{ backgroundImage: `url(${imageUrl})`, transition: 'background-image 1.5s ease-in-out' }}>
+      <div className="cargos">
         <div
           className={isArabic ? "overlay-content-arabic" : "overlay-content"}
         >

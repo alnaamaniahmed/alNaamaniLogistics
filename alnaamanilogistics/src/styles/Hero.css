@@ -8,7 +8,35 @@
     transform: translateY(0);
   }
 }
-
+@keyframes backgroundRotate {
+  0% {
+    background-image: url('../images/airport.jpg');
+  }
+  20% {
+    background-image: url('../images/airport.jpg');
+  }
+  25% {
+    background-image: url('../images/cargo.jpg');
+  }
+  45% {
+    background-image: url('../images/cargo.jpg');
+  }
+  50% {
+    background-image: url('../images/cargoship.jpg');
+  }
+  70% {
+    background-image: url('../images/cargoship.jpg');
+  }
+  75% {
+    background-image: url('../images/containers.jpg');
+  }
+  95% {
+    background-image: url('../images/containers.jpg');
+  }
+  100% {
+    background-image: url('../images/airport.jpg');
+  }
+}
 .hero-container, .hero-container-arabic {
   display: flex;
   flex-direction: column;
@@ -25,11 +53,12 @@
 
 .cargos {
   width: 100%;
-  height: 780px;
+  height: 773px;
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
+  animation: backgroundRotate 15s infinite;
 }
 .overlay-content, .overlay-content-arabic{
   width: 100%;
@@ -514,7 +543,7 @@
     font-size: 1rem;
   }
   .cargos {
-    height: 680px;
+    height: 600px;
   }
 }
 @media (max-width: 500px) {
@@ -523,9 +552,6 @@
   }
 }
 @media (max-width: 478px) {
-  .cargos {
-    height: 600px;
-  }
   .overlay-content > h1, .overlay-content-arabic > h1 {
     padding: 0.5rem;
     font-size: 1.6rem;
