@@ -19,7 +19,7 @@
     position: relative;
     left: 0;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
     height: 3rem;
     text-align: center;
     background-color: #850303;
@@ -92,7 +92,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     overflow: hidden;
     line-height: 0;
     z-index: 1;
@@ -114,7 +114,7 @@
     position: absolute;
     top: -20px; 
     left: 0;
-    width: 100%;
+    width: 100vw;
     overflow: hidden;
     line-height: 0;
     z-index: 2;
@@ -136,7 +136,7 @@
     position: absolute;
     top: -40px; 
     left: 0;
-    width: 100%;
+    width: 100vw;
     overflow: hidden;
     line-height: 0;
     z-index: 3;
