@@ -313,3 +313,37 @@
 .carousel:hover .slide .legend {
     opacity: 1
 }
+@media (max-width: 880px) {
+  /* Hide slider arrows */
+  .carousel .control-arrow {
+    display: none !important;
+  }
+
+  /* Hide slider dots */
+  .carousel .control-dots {
+    display: none !important;
+  }
+
+  /* Disable hover effect to maintain autoplay */
+  .carousel:hover .slide .legend {
+    opacity: 0.25; /* Maintain opacity to prevent disruption */
+  }
+
+  /* Disable manual swipe and interactions */
+  .carousel {
+    touch-action: none; /* Prevent swipe actions */
+    pointer-events: none; /* Disable all pointer events */
+    overflow: hidden; /* Ensure no overflow disrupts autoplay */
+  }
+
+  /* Ensure autoplay continues without interruptions */
+  .carousel .slider {
+    pointer-events: none; /* Disable pointer events for slider */
+    -webkit-overflow-scrolling: touch; /* Allow smooth scrolling (optional) */
+  }
+
+  /* Ensure no cursor change on hover */
+  .carousel:hover {
+    cursor: default; /* Ensure no cursor change on hover */
+  }
+}
