@@ -6,10 +6,10 @@ import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
 import truckImg from "../images/truckImg.png";
-import airportImg from "../images/airport.jpg";
-import cargo from "../images/cargo.jpg";
-import cargoship from "../images/cargoship.jpg";
-import containers from "../images/containers.jpg";
+import airportImg from "../images/bus.png";
+import cargo from "../images/bus.png";
+import cargoship from "../images/bus.png";
+import containers from "../images/bus.png";
 import { Carousel } from 'react-responsive-carousel';
 import '../styles/carousel.min.css'; 
 
@@ -152,6 +152,7 @@ function Hero({ isArabic }) {
         autoFocus={true}
         stopOnHover={false}
         interval={4000}
+        transitionTime={800} 
         className="carousel-wrapper"
       >
         <div className="cargos">
