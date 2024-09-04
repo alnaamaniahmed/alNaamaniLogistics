@@ -11,7 +11,7 @@ import cargo from "../images/cargo.jpg";
 import cargoship from "../images/cargoship.jpg";
 import containers from "../images/containers.jpg";
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
+import '../styles/carousel.min.css'; 
 
 function Hero({ isArabic }) {
 
@@ -150,20 +150,20 @@ function Hero({ isArabic }) {
         showStatus={false} 
         className="carousel-wrapper"
       >
-        <div>
+        <div className="cargos">
           <img src={cargoship} alt="Cargo Ship" />
         </div>
-        <div>
+        <div className="cargos">
           <img src={cargo} alt="Cargo" />
         </div>
-        <div>
+        <div className="cargos">
           <img src={airportImg} alt="Airport" />
         </div>
-        <div>
+        <div className="cargos">
           <img src={containers} alt="Containers" />
         </div>
       </Carousel>
-        <div
+      <div
           className={isArabic ? "overlay-content-arabic" : "overlay-content"}
         >
           <h1>
