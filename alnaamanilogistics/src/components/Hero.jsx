@@ -6,10 +6,10 @@ import busL from "../images/bus.png";
 import planeL from "../images/plane.png";
 import worldL from "../images/worldwide.png";
 import truckImg from "../images/truckImg.png";
-import airportImg from "../images/airporOpt.jpg";
-import cargo from "../images/bleh.jpg";
-import cargoship from "../images/cargo2Opt.jpg";
-import containers from "../images/cargoShipOpt.jpg";
+import airportImg from "../images/airport.jpg";
+import cargo from "../images/cargo.jpg";
+import cargoship from "../images/cargoship.jpg";
+import containers from "../images/containers.jpg";
 import { Carousel } from 'react-responsive-carousel';
 import '../styles/carousel.min.css'; 
 
