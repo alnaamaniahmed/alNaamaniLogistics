@@ -40,7 +40,7 @@
 
 
 .overlay-content, .overlay-content-arabic{
-  /* border: 2px solid blue; */
+  border: 2px solid blue;
   width: 100vw;
   position: absolute;
   top: 45%;
@@ -55,17 +55,17 @@
   direction: rtl;
 }
 .overlay-content > h1 , .overlay-content-arabic > h1{
-  /* border: 2px solid black; */
+  border: 2px solid black;
   font-size: 2.5rem;
   font-weight: 500;
 }
 .overlay-content > h1 > span , .overlay-content-arabic > h1 > span{
-  /* border: 2px solid black; */
+  border: 2px solid black;
   color: #ce1b1b;
   font-weight: 600;
 }
 .overlay-content > #first, .overlay-content-arabic > #first{
-  /* border: 2px solid black; */
+  border: 2px solid black;
   color: #f0f0f0;
   font-size: 2rem;
   font-weight: 500;
@@ -78,7 +78,7 @@
   left: 2rem;
 }
 .overlay-content > #second, .overlay-content-arabic > #second {
-  /* border: 2px solid black; */
+  border: 2px solid black;
   color: #ce1b1b;
   font-size: 2rem;
   font-weight: 600;
@@ -528,6 +528,7 @@
     left: 9rem;
     font-size: 1.28rem;
   }
+
   .services > h2 {
     font-size: 1.28rem;
   }
@@ -557,10 +558,12 @@
   }
   .overlay-content > #first, .overlay-content-arabic > #first{
     padding-top: 2rem;
+    left: 0rem;
     font-size: 1.2rem;
     text-align: center;
   }
   .overlay-content > #second, .overlay-content-arabic > #second {
+    left: 0;
     font-size: 1.2rem;
     text-align: center;
   }
