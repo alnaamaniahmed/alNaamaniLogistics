@@ -22,14 +22,27 @@
   opacity: 0;
   animation: fadeInUp 1.5s ease-out forwards 0.8s;
 }
-
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
 .cargos {
   width: 100%;
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
+  margin: 0; /* Ensure no extra margins */
+  padding: 0; /* Ensure no extra padding */
+  background-color: #f0f0f0; /* Fallback background color to prevent white flashes */
 }
+.cargos img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
+  transition: opacity 0.5s ease-in-out;/* Ensures the image covers the container */
+}
+
 .overlay-content, .overlay-content-arabic{
   width: 100%;
   position: absolute;
@@ -403,6 +416,12 @@
 }
 
 @media (max-width: 880px) {
+  .cargos {
+    padding: 0; /* Ensure padding is zero */
+  }
+  .carousel-wrapper {
+    padding: 0; /* Ensure padding is zero */
+  }
   .contactUsSection {
     flex-direction: column;
   }
