@@ -23,7 +23,7 @@ function Hero({ isArabic }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("");
   const [loadingDots, setLoadingDots] = useState("");
-  const [key, setKey] = useState(0);
+  // const [key, setKey] = useState(0);
   // const [currentImageIndex, setCurrentImageIndex] = useState(0);
   // const images = useMemo(() => [
   //   cargoship,
@@ -132,10 +132,10 @@ function Hero({ isArabic }) {
       );
     }
   };
-  // Force re-render the typewriter component on language change
-  useEffect(() => {
-    setKey((prevKey) => prevKey + 1); // Increment key to trigger re-render
-  }, [isArabic]);
+  // // Force re-render the typewriter component on language change
+  // useEffect(() => {
+  //   setKey((prevKey) => prevKey + 1); // Increment key to trigger re-render
+  // }, [isArabic]);
 
   return (
     <div
@@ -185,7 +185,7 @@ function Hero({ isArabic }) {
           <p id="second">
             {""}
             <Typewriter
-              key={key}
+              // key={key}
               words={
                 isArabic
                   ? ["التميز والكفاءة", "الاعتمادية والدقة", "الثقة والالتزام"]
