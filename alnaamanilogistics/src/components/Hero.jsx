@@ -10,11 +10,10 @@ import airportImg from "../images/airport.jpg";
 import cargo from "../images/cargo.jpg";
 import cargoship from "../images/cargoship.jpg";
 import containers from "../images/containers.jpg";
-import { Carousel } from 'react-responsive-carousel';
-import '../styles/carousel.min.css'; 
+import { Carousel } from "react-responsive-carousel";
+import "../styles/carousel.min.css";
 
 function Hero({ isArabic }) {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -143,32 +142,32 @@ function Hero({ isArabic }) {
       className={isArabic ? "hero-container-arabic" : "hero-container"}
     >
       <div className="cargos">
-      <Carousel 
-        autoPlay 
-        infiniteLoop 
-        showThumbs={false} 
-        showStatus={false} 
-        showArrows={false}
-        autoFocus={true}
-        stopOnHover={false}
-        interval={4000}
-        transitionTime={800} 
-        className="carousel-wrapper"
-      >
-        <div className="cargos">
-          <img src={cargoship} alt="Cargo Ship" />
-        </div>
-        <div className="cargos">
-          <img src={cargo} alt="Cargo" />
-        </div>
-        <div className="cargos">
-          <img src={airportImg} alt="Airport" />
-        </div>
-        <div className="cargos">
-          <img src={containers} alt="Containers" />
-        </div>
-      </Carousel>
-      <div
+        <Carousel
+          autoPlay
+          infiniteLoop
+          showThumbs={false}
+          showStatus={false}
+          showArrows={false}
+          autoFocus={true}
+          stopOnHover={false}
+          interval={4000}
+          transitionTime={800}
+          className="carousel-wrapper"
+        >
+          <div className="cargos">
+            <img src={cargoship} alt="Cargo Ship" />
+          </div>
+          <div className="cargos">
+            <img src={cargo} alt="Cargo" />
+          </div>
+          <div className="cargos">
+            <img src={airportImg} alt="Airport" />
+          </div>
+          <div className="cargos">
+            <img src={containers} alt="Containers" />
+          </div>
+        </Carousel>
+        <div
           className={isArabic ? "overlay-content-arabic" : "overlay-content"}
         >
           <h1>
@@ -313,7 +312,7 @@ function Hero({ isArabic }) {
             className={`submit-status ${fadeOut ? "fade-out" : ""}`}
             style={{ fontFamily: "Raleway, sans-serif" }}
           >
-            <p  style={{ direction: isArabic ? "rtl" : "ltr" }}>
+            <p style={{ direction: isArabic ? "rtl" : "ltr" }}>
               {submitStatus}
               {loadingDots}
             </p>
