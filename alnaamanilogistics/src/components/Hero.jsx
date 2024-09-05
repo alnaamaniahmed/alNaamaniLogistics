@@ -19,27 +19,50 @@ function Hero({ isArabic }) {
     email: "",
     message: "",
   });
+  useEffect(() => {
+    const services = document.querySelector('.services');
+    const aboutUs = document.querySelector('.AboutUs');
+    const contactUs = document.querySelector('.contactUsSection');
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+            }else {
+              entry.target.classList.remove('animate');
+          }
+        },
+        {
+            root: null, 
+            threshold: 0.1, 
+        }
+    );
+
+    if (services) {
+        observer.observe(services);
+    }
+    if (aboutUs) {
+      observer.observe(aboutUs);
+    }
+    if (contactUs) {
+      observer.observe(contactUs);
+    }
+    // Cleanup on unmount
+    return () => {
+        if (services) {
+            observer.unobserve(services);
+        }
+        if (aboutUs) {
+          observer.unobserve(aboutUs);
+        }
+        if (contactUs) {
+          observer.unobserve(contactUs);
+        }
+    };
+}, []);
   const [fadeOut, setFadeOut] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("");
   const [loadingDots, setLoadingDots] = useState("");
-  // const [key, setKey] = useState(0);
-  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  // const images = useMemo(() => [
-  //   cargoship,
-  //   cargo,
-  //   airportImg,
-  //   containers
-  // ], []);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, 3000);
-
-  //   return () => clearInterval(intervalId);
-  // }, [images]);
-
-  // const imageUrl = images[currentImageIndex];
   useEffect(() => {
     console.log("is Arabic: ", isArabic);
     if (
@@ -131,10 +154,6 @@ function Hero({ isArabic }) {
       );
     }
   };
-  // // Force re-render the typewriter component on language change
-  // useEffect(() => {
-  //   setKey((prevKey) => prevKey + 1); // Increment key to trigger re-render
-  // }, [isArabic]);
 
   return (
     <div
@@ -156,16 +175,16 @@ function Hero({ isArabic }) {
           className="carousel-wrapper"
         >
           <div className="cargos">
-            <img src={cargoship} alt="Cargo Ship" />
+            <img loading="lazy" src={cargoship} alt="Cargo Ship" />
           </div>
           <div className="cargos">
-            <img src={cargo} alt="Cargo" />
+            <img loading="lazy" src={cargo} alt="Cargo" />
           </div>
           <div className="cargos">
-            <img src={airportImg} alt="Airport" />
+            <img loading="lazy" src={airportImg} alt="Airport" />
           </div>
           <div className="cargos">
-            <img src={containers} alt="Containers" />
+            <img loading="lazy" src={containers} alt="Containers" />
           </div>
         </Carousel>
         <div
