@@ -263,7 +263,7 @@
 .carousel .control-dots {
     position: absolute;
     bottom: 0;
-    margin: 10px 0;
+    margin: 3.5rem 0;
     padding: 0;
     text-align: center;
     width: 100%;
@@ -285,13 +285,13 @@
     opacity: .3;
     filter: alpha(opacity=30);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
-    background: #fff;
+    background: #f0f0f0;
     border-radius: 50%;
-    width: 8px;
-    height: 8px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
     display: inline-block;
-    margin: 0 8px
+    margin: 0 20px
 }
 
 .carousel .control-dots .dot.selected,
@@ -314,18 +314,11 @@
     opacity: 1
 }
 @media (max-width: 880px) {
-/* Hide all carousel control arrows */
-.carousel .control-arrow,
-.carousel .control-prev.control-arrow,
-.carousel .control-next.control-arrow {
-  display: none !important;
-}
 
-/* Hide all carousel dots */
-.carousel .control-dots {
-  display: none !important;
+.carousel .control-dots .dot{
+    width: 10px;
+    height: 10px;
 }
-
 /* Remove any potential artifact that might be related to controls */
 .carousel {
   overflow: hidden; /* Ensure no overflow artifacts */
@@ -340,10 +333,6 @@
 /* Ensure smooth sliding without visual interruptions */
 .carousel .slider-wrapper {
   overflow: hidden; /* Hide overflow to prevent any visual artifacts */
-}
-
-.carousel .slider {
-  pointer-events: none; /* Ensure slider does not interact */
 }
 
 /* Ensure no cursor change on hover */
