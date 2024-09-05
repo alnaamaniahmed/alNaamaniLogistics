@@ -150,8 +150,9 @@ function Hero({ isArabic }) {
           showArrows={false}
           autoFocus={true}
           stopOnHover={false}
-          interval={4000}
-          transitionTime={800}
+          interval={5200}
+          transitionTime={1000}
+          width
           className="carousel-wrapper"
         >
           <div className="cargos">
