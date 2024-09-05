@@ -19,6 +19,7 @@ function Hero({ isArabic }) {
     email: "",
     message: "",
   });
+
   useEffect(() => {
     const services = document.querySelector('.services');
     const aboutUs = document.querySelector('.AboutUs');
@@ -163,13 +164,12 @@ function Hero({ isArabic }) {
       <div className="cargos">
         <Carousel
           autoPlay
-          infiniteLoop
           showThumbs={false}
           showStatus={false}
           showArrows={false}
           autoFocus={true}
           stopOnHover={false}
-          interval={5200}
+          interval={5500}
           transitionTime={1000}
           width
           className="carousel-wrapper"
