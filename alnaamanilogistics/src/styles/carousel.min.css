@@ -315,9 +315,8 @@
 }
 @media (max-width: 880px) {
 
-.carousel .control-dots .dot{
-    width: 10px;
-    height: 10px;
+.carousel .control-dots {
+  display: none !important;
 }
 /* Remove any potential artifact that might be related to controls */
 .carousel {
@@ -329,7 +328,10 @@
   touch-action: none; /* Prevent swipe actions */
   pointer-events: none; /* Disable all pointer events */
 }
-
+.carousel .slider {
+    pointer-events: none; /* Ensure slider does not interact */
+  }
+  
 /* Ensure smooth sliding without visual interruptions */
 .carousel .slider-wrapper {
   overflow: hidden; /* Hide overflow to prevent any visual artifacts */
