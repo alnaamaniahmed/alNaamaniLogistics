@@ -123,7 +123,7 @@ function Hero({ isArabic }) {
       isArabic ? "في انتظار إرسال الرسالة" : "Waiting to send message"
     );
     try {
-      const response = await fetch("https://formspree.io/f/xnnaodkl", {
+      const response = await fetch("https://formspree.io/f/mwpezrgz", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
