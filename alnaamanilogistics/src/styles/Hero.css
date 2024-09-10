@@ -24,7 +24,7 @@
   width: 100vw;
 }
 .cargos {
-  height: 100vh;
+ 
   width: 100vw;
   object-fit: cover;
   background-size: cover;
@@ -368,21 +368,21 @@
   font-weight: 600;
   text-align: center;
 }
-@media (max-width: 3000px){
+/* @media (max-width: 3000px){
   .cargos{
-    height: 900px;
+    height: 800px;
   }
 }
 @media (max-width: 1920px){
   .cargos{
-    height: 880px;
+    height: 900px;
   }
 }
 @media (max-width: 1700px){
   .cargos{
-    height: 750px;
+    height: 500px;
   }
-}
+} */
 @media (max-width: 1152px) {
   .aboutUs-text > p {
     padding-left: 2rem;
