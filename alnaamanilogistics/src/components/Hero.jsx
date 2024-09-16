@@ -19,18 +19,67 @@ function Hero({ isArabic }) {
     email: "",
     message: "",
   });
+  useEffect(() => {
+    const sections = [
+      { id: 'home', title: isArabic ? 'الرئيسية - النعماني اللوجستية' : 'Home - Al Naamani Logistics' },
+      { id: 'services', title: isArabic ? 'الخدمات - النعماني اللوجستية' : 'Services - Al Naamani Logistics' },
+      { id: 'about', title: isArabic ? 'من نحن - النعماني اللوجستية' : 'About Us - Al Naamani Logistics' },
+      { id: 'contact', title: isArabic ? 'تواصل معنا - النعماني اللوجستية' : 'Contact Us - Al Naamani Logistics' },
+    ];
 
+    const updateTitle = () => {
+      const offset = window.innerHeight * 0.3;
+      let titleUpdated = false; 
+      sections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top >= -offset && rect.top <= offset) {
+            if (!titleUpdated || document.title !== section.title) {
+              document.title = section.title;
+              titleUpdated = true;
+            }
+          }
+        }
+      });
+    };
+
+    const handleScroll = () => {
+      updateTitle();
+    };
+
+
+    updateTitle();
+
+    window.addEventListener('scroll', handleScroll);
+
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isArabic]);
   useEffect(() => {
     const services = document.querySelector('.services');
     const aboutUs = document.querySelector('.AboutUs');
     const contactUs = document.querySelector('.contactUsSection');
+
+    const sections = [
+      { element: services, title: 'Services - Al Naamani Logistics' },
+      { element: aboutUs, title: 'About Us - Al Naamani Logistics' },
+      { element: contactUs, title: 'Contact Us - Al Naamani Logistics' },
+    ];
+
     const observer = new IntersectionObserver(
         ([entry]) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('animate');
-            }else {
+              const section = sections.find(section => section.element === entry.target);
+              if (section) {
+                document.title = section.title;  // Update the title when a section is in view
+              }
+            } else {
               entry.target.classList.remove('animate');
-          }
+            }
         },
         {
             root: null, 
@@ -38,26 +87,20 @@ function Hero({ isArabic }) {
         }
     );
 
-    if (services) {
-        observer.observe(services);
-    }
-    if (aboutUs) {
-      observer.observe(aboutUs);
-    }
-    if (contactUs) {
-      observer.observe(contactUs);
-    }
+    // Observe each section
+    sections.forEach(section => {
+      if (section.element) {
+        observer.observe(section.element);
+      }
+    });
+
     // Cleanup on unmount
     return () => {
-        if (services) {
-            observer.unobserve(services);
+      sections.forEach(section => {
+        if (section.element) {
+          observer.unobserve(section.element);
         }
-        if (aboutUs) {
-          observer.unobserve(aboutUs);
-        }
-        if (contactUs) {
-          observer.unobserve(contactUs);
-        }
+      });
     };
 }, []);
   const [fadeOut, setFadeOut] = useState(false);
@@ -282,11 +325,11 @@ function Hero({ isArabic }) {
           </div>
         </div>
       </div>
-      <div className="AboutUs">
+      <div id="about"className="AboutUs">
         <div className="aboutUs-img">
           <img src={truckImg} alt={isArabic ? "صورة الشاحنة" : "truckImage"} />
         </div>
-        <div id="about" className="aboutUs-text">
+        <div className="aboutUs-text">
           <h2>{isArabic ? "من نحن" : "About Us"}</h2>
           <p className={isArabic ? "arabicPara" : ""}>
             {isArabic
